@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calculator"></i> My Awesome Calculator</h1>
+            <p>The most amazing calculator you'll ever use!</p>
+        </header>
+
+        <div class="calculator">
+            <div class="display-section">
+                <div class="history" id="history"></div>
+                <div class="current-calculation" id="expression">0</div>
+                <div class="result" id="result">0</div>
+            </div>
+
+            <div class="buttons-section">
+                <!-- Memory and Advanced Functions Row -->
+                <div class="button-row">
+                    <button class="btn btn-function" onclick="clearMemory()">MC</button>
+                    <button class="btn btn-function" onclick="recallMemory()">MR</button>
+                    <button class="btn btn-function" onclick="addToMemory()">M+</button>
+                    <button class="btn btn-function" onclick="subtractFromMemory()">M-</button>
+                    <button class="btn btn-function" onclick="storeMemory()">MS</button>
+                </div>
+
+                <!-- Scientific Functions Row 1 -->
+                <div class="button-row">
+                    <button class="btn btn-function" onclick="addFunction('sin(')">sin</button>
+                    <button class="btn btn-function" onclick="addFunction('cos(')">cos</button>
+                    <button class="btn btn-function" onclick="addFunction('tan(')">tan</button>
+                    <button class="btn btn-function" onclick="addFunction('log(')">log</button>
+                    <button class="btn btn-function" onclick="addFunction('ln(')">ln</button>
+                </div>
+
+                <!-- Scientific Functions Row 2 -->
+                <div class="button-row">
+                    <button class="btn btn-function" onclick="addFunction('sqrt(')">√</button>
+                    <button class="btn btn-function" onclick="addToExpression('**')">x²</button>
+                    <button class="btn btn-function" onclick="addToExpression('**3')">x³</button>
+                    <button class="btn btn-function" onclick="addToExpression('π')">π</button>
+                    <button class="btn btn-function" onclick="addToExpression('e')">e</button>
+                </div>
+
+                <!-- Main Calculator Row 1 -->
+                <div class="button-row">
+                    <button class="btn btn-clear" onclick="clearAll()">C</button>
+                    <button class="btn btn-clear" onclick="clearEntry()">CE</button>
+                    <button class="btn btn-operator" onclick="backspace()">⌫</button>
+                    <button class="btn btn-operator" onclick="addToExpression('/')">/</button>
+                </div>
+
+                <!-- Main Calculator Row 2 -->
+                <div class="button-row">
+                    <button class="btn btn-number" onclick="addToExpression('7')">7</button>
+                    <button class="btn btn-number" onclick="addToExpression('8')">8</button>
+                    <button class="btn btn-number" onclick="addToExpression('9')">9</button>
+                    <button class="btn btn-operator" onclick="addToExpression('*')">×</button>
+                </div>
+
+                <!-- Main Calculator Row 3 -->
+                <div class="button-row">
+                    <button class="btn btn-number" onclick="addToExpression('4')">4</button>
+                    <button class="btn btn-number" onclick="addToExpression('5')">5</button>
+                    <button class="btn btn-number" onclick="addToExpression('6')">6</button>
+                    <button class="btn btn-operator" onclick="addToExpression('-')">-</button>
+                </div>
+
+                <!-- Main Calculator Row 4 -->
+                <div class="button-row">
+                    <button class="btn btn-number" onclick="addToExpression('1')">1</button>
+                    <button class="btn btn-number" onclick="addToExpression('2')">2</button>
+                    <button class="btn btn-number" onclick="addToExpression('3')">3</button>
+                    <button class="btn btn-operator" onclick="addToExpression('+')">+</button>
+                </div>
+
+                <!-- Main Calculator Row 5 -->
+                <div class="button-row">
+                    <button class="btn btn-number" onclick="toggleSign()">±</button>
+                    <button class="btn btn-number" onclick="addToExpression('0')">0</button>
+                    <button class="btn btn-number" onclick="addToExpression('.')">.</button>
+                    <button class="btn btn-equals" onclick="calculate()">=</button>
+                </div>
+
+                <!-- Parentheses and Percentage -->
+                <div class="button-row">
+                    <button class="btn btn-operator" onclick="addToExpression('(')">(</button>
+                    <button class="btn btn-operator" onclick="addToExpression(')')">)</button>
+                    <button class="btn btn-function" onclick="addToExpression('%')">%</button>
+                    <button class="btn btn-function" onclick="calculateFactorial()">n!</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h3><i class="fas fa-history"></i> Calculation History</h3>
+            <div class="history-list" id="historyList">
+                <p class="no-history">No calculations yet</p>
+            </div>
+            <button class="btn btn-clear" onclick="clearHistory()">Clear History</button>
+        </div>
+
+        <footer>
+            <p>Built with Python Flask | <i class="fas fa-heart"></i> Made with love</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+</body>
+</html>
