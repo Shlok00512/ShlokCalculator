@@ -29,3 +29,4 @@ echo "🎉 Enjoy your awesome calculator!"
 echo ""
 
 python app.py
+

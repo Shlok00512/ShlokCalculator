@@ -388,3 +388,4 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
