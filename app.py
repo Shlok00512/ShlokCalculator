@@ -106,3 +106,6 @@ if __name__ == '__main__':
     # Mobile access: http://[YOUR-IP]:8080/advanced-calc
     app.run(debug=True, host='0.0.0.0', port=8080)
     
+    
+    
+    
