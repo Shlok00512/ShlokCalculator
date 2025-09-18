@@ -1,8 +1,16 @@
 from flask import Flask, render_template, request, jsonify
 import math
 import re
+import os
 
-app = Flask(__name__)
+# Get the directory of this file
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Go up one level to find templates and static folders
+parent_dir = os.path.dirname(current_dir)
+
+app = Flask(__name__, 
+            template_folder=os.path.join(parent_dir, 'templates'),
+            static_folder=os.path.join(parent_dir, 'static'))
 
 class Calculator:
     """Calculator class to handle all mathematical operations"""
@@ -59,6 +67,12 @@ class Calculator:
         except Exception as e:
             return f"Error: {str(e)}"
 
+# Health check route for debugging
+@app.route('/health')
+def health():
+    """Health check endpoint"""
+    return jsonify({'status': 'OK', 'message': 'Flask app is running'})
+
 # Routes
 @app.route('/')
 def index():
@@ -100,8 +114,19 @@ def history():
     """Calculator history page (future enhancement)"""
     return render_template('history.html')
 
+# For Vercel deployment - must be at the end of file
+# This is the WSGI application that Vercel will use
+application = app
+
 # This is required for Vercel
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=False)
+
+
+
+
+
+
+
 
 
