@@ -100,25 +100,8 @@ def history():
     """Calculator history page (future enhancement)"""
     return render_template('history.html')
 
+# This is required for Vercel
 if __name__ == '__main__':
-    # Run the My Awesome Calculator on port 5000 (mobile-friendly)
-    # Access via: http://localhost:5000, /my-calculator, or /advanced-calc
-    # Mobile access: http://[YOUR-IP]:5000/advanced-calc
-    app.run(debug=True, host='0.0.0.0', port=5000)
-    
-    
-    
-    
-    
-    
-   
-   
-   
-    
-    
-    
-    
-    
-    
+    app.run()
 
 
